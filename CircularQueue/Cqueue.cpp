@@ -1,10 +1,7 @@
 #include <iostream>
 using namespace std;
-void insert(int);
-void del();
-void display();
-int front = -1, rear = -1;
-int q[10];
+
+
 class Cqueue
 {
 private:
