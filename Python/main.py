@@ -1,3 +1,6 @@
+import pprint as p
 # print("djay")
-# l = [i for i in range(10)]
-print([i for i in range(5,50,3)])
+l = [[True for i in range(5)] for i in range(10) ]
+print(l)
+
+
