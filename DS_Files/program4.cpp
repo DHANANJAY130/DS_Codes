@@ -40,16 +40,89 @@ public:
     void display()
     {
         node1 *ptr;
-        ptr = start->next;
-        cout << start->data << "\t";
-        while (ptr != start)
+        ptr = start;
+        while (ptr->next != start)
         {
-            cout << ptr->data << "\t";
+            cout << '\t' << ptr->data;
             ptr = ptr->next;
         }
-        cout << "\n";
+    }
+    void insBeg(int val)
+    {
+        node1 *ptr;
+        ptr = start;
+        node1 *newnode = new node1;
+        newnode->data = val;
+        newnode->next = ptr->next;
+        while (ptr->next != start)
+        {
+            ptr = ptr->next;
+        }
+        start=newnode;
+        ptr->next = start;
+    }
+    void insEnd(int val)
+    {
+        node1 *ptr;
+        ptr = start;
+        node1 *newnode = new node1;
+        newnode->data = val;
+        while (ptr->next != start)
+        {
+            ptr = ptr->next;
+        }
+        ptr->next = newnode;
+        newnode->next = start;
+        
+    }
+    void insAfter(int data, int val)
+    {
+        node1 *ptr;
+        ptr = start;
+        node1 *newnode = new node1;
+        newnode->data = val;
+        while (ptr->data != data)
+        {
+            ptr = ptr->next;
+        }
+        newnode->next = ptr->next;
+        ptr->next = newnode;
+        
+    }
+    void delNode(int data)
+    {
+        node1 *ptr;
+        node1 *temp;
+        ptr = start;
+        if (ptr == NULL)
+        {
+            cout << "\nUnderFlow Condition. ";
+            return;
+        }
+        while (ptr->data != data)
+        {
+            temp=ptr;
+            ptr = ptr->next;
+        }
+        temp->next = ptr->next;
+        delete ptr;
+    }
+    void searchElement(int data)
+    {
+        node1 *ptr;
+        ptr = start;
+        while (ptr->data != data && ptr->next!=start)
+        {
+            ptr = ptr->next;
+        }
+        if (ptr->data == data)
+            cout << "\nElement is present in the List. ";
+        else
+            cout << "\nElement is not present in the List. ";
     }
 };
+
+
 struct node
 {
     int data;
